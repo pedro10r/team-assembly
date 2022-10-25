@@ -1,16 +1,20 @@
+import { useState } from "react";
+import { FlatList } from "react-native";
+
 import { Header } from "@components/Header";
 import { Highlight } from "@components/Highlight";
 import { Input } from "@components/Input";
 import { ButtonIcon } from "@components/ButtonIcon";
 import { Filter } from "@components/Filter";
+import { PlayerCard } from "@components/PlayerCard";
+import { ListEmpty } from "@components/ListEmpty";
 
 import { Container, Form, HeaderList, NumberOfPlayer } from "./styles";
-import { FlatList } from "react-native";
-import { useState } from "react";
+import { Button } from "@components/Button";
 
 export function Players() {
   const [team, setTeam] = useState('Time A');
-  const [players, setPlayers] = useState([]);
+  const [players, setPlayers] = useState(['Pedro1', 'Pedro2', 'Pedro3', 'Pedro4', 'Pedro5', 'Pedro6', 'Pedro7', 'Pedro8', 'Pedro9', 'Pedro10', 'Pedro11']);
 
   return (
     <Container>
@@ -50,7 +54,29 @@ export function Players() {
           {players.length}
         </NumberOfPlayer>
       </HeaderList>
-      
+
+      <FlatList
+        data={players}
+        keyExtractor={item => item}
+        renderItem={({ item }) => (
+          <PlayerCard
+            name={item}
+            onRemove={() => {}}
+          />
+        )}
+        ListEmptyComponent={() => (
+          <ListEmpty
+            message='Não há pessoas nesse time.'
+          />
+        )}
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={[ { paddingBottom: 50 }, players.length === 0 && { flex: 1} ]}
+      />
+
+      <Button
+        title='Remover Turma'
+        type='SECONDARY'
+      />
     </Container>
   );
 }
