@@ -9,12 +9,12 @@ import { Filter } from "@components/Filter";
 import { PlayerCard } from "@components/PlayerCard";
 import { ListEmpty } from "@components/ListEmpty";
 
-import { Container, Form, HeaderList, NumberOfPlayer } from "./styles";
+import { Container, Form, HeaderList, NumberOfPlayers } from "./styles";
 import { Button } from "@components/Button";
 
 export function Players() {
   const [team, setTeam] = useState('Time A');
-  const [players, setPlayers] = useState(['Pedro1', 'Pedro2', 'Pedro3', 'Pedro4', 'Pedro5', 'Pedro6', 'Pedro7', 'Pedro8', 'Pedro9', 'Pedro10', 'Pedro11']);
+  const [players, setPlayers] = useState([]);
 
   return (
     <Container>
@@ -50,9 +50,9 @@ export function Players() {
           )}
         />
 
-        <NumberOfPlayer>
+        <NumberOfPlayers>
           {players.length}
-        </NumberOfPlayer>
+        </NumberOfPlayers>
       </HeaderList>
 
       <FlatList
