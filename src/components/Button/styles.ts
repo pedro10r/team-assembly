@@ -1,4 +1,4 @@
-import styled from 'styled-components/native';
+import styled, { css } from 'styled-components/native';
 
 export type ButtonTypeStyleProps = 'PRIMARY' | 'SECONDARY';
 
@@ -20,7 +20,9 @@ export const Container = styled.TouchableOpacity<Props>`
 `;
 
 export const Title = styled.Text`
-  font-size: ${({ theme }) => theme.font_size.MD}px;
-  font-family: ${({ theme }) => theme.font_family.bold};
-  color: ${({ theme }) => theme.colors.white};
+  ${({ theme }) => css`
+    font-size: ${theme.font_size.MD}px;
+    font-family: ${theme.font_family.bold};
+    color: ${theme.colors.white};
+  `};
 `;
